@@ -100,7 +100,7 @@ export const PRODUCTS: Product[] = [
  
  
  
-###cart.component.html
+## cart.component.html
  
 <div class="card my-16 mr-25 outlined">
   <section class="layout-row align-items-center justify-content-center px-16">

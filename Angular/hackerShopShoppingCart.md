@@ -1,4 +1,4 @@
-###app.component.html
+## app.component.html
  
  
 <h8k-navbar header="Hacker Shop"></h8k-navbar>
@@ -16,7 +16,7 @@
  
  
  
-###app.component.tS
+## app.component.tS
 import {Component} from '@angular/core';
 import {Cart, Product} from "../types";
  
