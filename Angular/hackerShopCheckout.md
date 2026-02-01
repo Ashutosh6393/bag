@@ -1,4 +1,8 @@
-### app.component.ts
+###HackerShopCheckout
+ 
+ 
+###app.comment.ts
+ 
  
 import {Component} from '@angular/core';
 import {Cart, Product} from "../types";
@@ -100,7 +104,9 @@ export const PRODUCTS: Product[] = [
  
  
  
-## cart.component.html
+ 
+###cart.component.html
+ 
  
 <div class="card my-16 mr-25 outlined">
   <section class="layout-row align-items-center justify-content-center px-16">
@@ -154,7 +160,7 @@ export const PRODUCTS: Product[] = [
  
  
  
-### cart.component.ts
+###cart.component.ts
  
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Cart} from "../../types";
@@ -179,8 +185,8 @@ export class CartComponent implements OnInit {
  
  
  
+###product-list.component.html
  
-###product-list-component.ts
 <div class="layout-row wrap justify-content-center">
   <section *ngFor="let product of products; let idx = index;" class="w-30 product-item">
     <div class="card ma-16">
@@ -204,7 +210,7 @@ export class CartComponent implements OnInit {
  
  
  
-### product-list-component.ts
+###product-list.component.ts
  
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from "../../types";
@@ -230,3 +236,8 @@ export class ProductListComponent implements OnInit {
   }
  
 }
+ 
+ 
+ 
+ 
+ 

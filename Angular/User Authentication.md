@@ -205,3 +205,75 @@ export class AppService {
   }
 }
 
+import { BrowserModule } from '@angular/platform-browser';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AppComponent } from './app.component';
+
+import { CreateTasks } from './CreateTasks/createTasks.component';
+import { UserTasks } from './UserTasks/userTasks.component';
+import { StatusTasks } from './StatusTasks/statusTasks.component';
+import { RouterModule } from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+import {AppService} from './app.service';
+import {TaskCard} from "./components/TaskCard/taskCard.component";
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    CreateTasks,
+    UserTasks,
+    StatusTasks,
+    TaskCard
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterTestingModule,
+    RouterModule.forRoot([{
+      path: "", component: CreateTasks
+    },
+    {
+      path: "tasks/user", component: UserTasks
+    }, {
+      path: "tasks/status", component: StatusTasks
+    }
+    ])
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: [AppService],
+  bootstrap: [AppComponent],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule { }
+
+
+
+
+
+export interface ITasks {
+  userName: string;
+  task: string;
+  status: string;
+}
+
+export class AppService {
+  public tasksList: ITasks[] = [];
+  public statusList: byStatus[] = [];
+  public userList: byUser[] = [];
+  
+}
+
+interface byStatus {
+  x: string;
+  task: string[];
+}
+
+interface byUser {
+  x: string;
+  task: string[];
+}
+

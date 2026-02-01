@@ -1,4 +1,4 @@
-## app.component.html
+###app.component.html
  
  
 <h8k-navbar header="Hacker Shop"></h8k-navbar>
@@ -16,7 +16,7 @@
  
  
  
-## app.component.tS
+###app.component.tS
 import {Component} from '@angular/core';
 import {Cart, Product} from "../types";
  
@@ -141,33 +141,35 @@ export const PRODUCTS: Product[] = [
  
  
 ###  product-list.component.ts
-<div class="layout-row wrap justify-content-center">
-  <section *ngFor="let product of products; let idx = index;" class="w-30 product-item">
-    <div class="card ma-16">
-      <img [src]="product.image" class="product-image"/>
-      <div class="card-text pa-4">
-        <h5 class="ma-0 text-center">{{product.name}}</h5>
-        <p class="ma-0 mt-8 text-center">${{product.price}}</p>
-      </div>
-      <div class="card-actions justify-content-center pa-4">
-        <button *ngIf="product.cartQuantity === 0" (click)="onAdd(product)"class="x-small outlined" data-test-id="btn-item-add">
-          Add To Cart
-        </button>
+
+
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Product, UpdateMode} from "../../types";
  
-        <div *ngIf="product.cartQuantity > 0" class="layout-row justify-content-between align-items-center">
-          <button (click)="onDecrement(product)" class="x-small icon-only outlined"
-                  data-test-id="btn-quantity-subtract">
-            <i class="material-icons">remove</i>
-          </button>
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss'],
+  standalone: false
+})
+export class ProductListComponent implements OnInit {
+  @Input() products: Product[];
+  @Output() onAddToCart: EventEmitter<Product> = new EventEmitter();
+  @Output() onQuantityUpdate: EventEmitter<Product> = new EventEmitter();
+  @Output() onQuantityDecrease: EventEmitter<Product> = new EventEmitter();
  
-          <input type="number" class="cart-quantity" data-test-id="cart-quantity" [value]="product.cartQuantity"/>
+  ngOnInit() {}
+  onAdd(product){
+    this.onAddToCart.emit(product);
+  }
+   onIncrement(product){
+    this.onQuantityUpdate.emit(product);
+  }
+   onDecrement(product){
+    this.onQuantityDecrease.emit(product);
+  }
+}
  
-          <button (click)=" onIncrement(product)" class="x-small icon-only outlined"
-                  data-test-id="btn-quantity-add">
-            <i class="material-icons">add</i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+ 
+ 
+ 
